@@ -22,10 +22,23 @@ pipeline {
         }
         stage('Test Execution') {
             when {
-                branch 'develop'
+                branch 'master'
             }
             steps {
                 echo  ' ##### Test Execution starts ##### '
+            }
+        }
+        stage('Release Artifacts') {
+            when {
+                branch 'develop'
+            }
+            steps {
+                echo  ' ##### Release Artifacts starts ##### '
+            }
+        }
+        stage('Kubernetes Deployment') {
+            steps {
+                echo  ' ##### Kubernetes Deployment startss ##### '
             }
         }
     }
