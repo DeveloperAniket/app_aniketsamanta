@@ -20,5 +20,13 @@ pipeline {
                 bat 'dotnet build'
             }
         }
+        stage('Test Execution') {
+            when {
+                branch 'develop'
+            }
+            steps {
+                echo  ' ##### Test Execution starts ##### '
+            }
+        }
     }
 }
