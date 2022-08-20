@@ -1,8 +1,8 @@
 pipeline {
     agent any
+
     environment {
-        MSBUILD_HOME = tool 'VisualStudio2022'
-        VSTEST_CONSOLE_HOME = tool 'vstest.console'
+ 
     }
     options {
         timestamps()
