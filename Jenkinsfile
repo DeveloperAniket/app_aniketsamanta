@@ -1,9 +1,6 @@
 pipeline {
     agent any
 
-    environment {
- 
-    }
     options {
         timestamps()
         timeout(time: 1, unit: 'HOURS')
