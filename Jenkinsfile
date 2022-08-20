@@ -8,14 +8,6 @@ pipeline {
         parallelsAlwaysFailFast()
     }
     stages {
-        stage('Checkout')
-        {
-            steps
-            {
-                echo  ' ##### checkout starts ##### '
-                checkout scm
-            }
-        }
         stage('Nuget restore') {
             steps {
                 echo  ' ##### Nuget restore starts ##### '
