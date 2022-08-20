@@ -11,13 +11,23 @@ pipeline {
         parallelsAlwaysFailFast()
     }
     stages {
+        stage('Checkout')
+        {
+            steps
+            {
+                echo  ' ##### checkout starts ##### '
+                checkout scm
+            }
+        }
         stage('Nuget restore') {
             steps {
+                echo  ' ##### Nuget restore starts ##### '
                 bat 'dotnet restore'
             }
         }
         stage('Code build') {
             steps {
+                echo  ' ##### Code build starts ##### '
                 bat 'dotnet build'
             }
         }
