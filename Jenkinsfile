@@ -8,12 +8,11 @@ pipeline {
         timestamps()
         timeout(time: 1, unit: 'HOURS')
         buildDiscarder(logRotator(daysToKeepStr: '10', numToKeepStr: '20'))
-        parallelsAlwaysFailFast()
     }
     stages {
         stage('Nuget restore') {
             steps {
-                echo  " ##### ${BRANCH_NAME} ##### "
+                echo 'Branch Name...' + env.BRANCH_NAME
                 echo  ' ##### Dotnet clean starts ##### '
                 bat 'dotnet clean'
                 echo  ' ##### Nuget restore starts ##### '
@@ -21,7 +20,7 @@ pipeline {
             }
         }
         stage('Start Sonarqube Analysis') {
-            when { anyOf { branch 'master' } }
+            when {   branch 'master'   }
             steps {
                 echo ' ##### Starting the sonar analysis ##### '
                 withSonarQubeEnv('Test_Sonar') {
