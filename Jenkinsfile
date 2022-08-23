@@ -10,6 +10,8 @@ pipeline {
     stages {
         stage('Nuget restore') {
             steps {
+                echo  ' ##### Dotnet clean starts ##### '
+                bat 'dotnet clean'
                 echo  ' ##### Nuget restore starts ##### '
                 bat 'dotnet restore'
             }
@@ -26,6 +28,7 @@ pipeline {
             }
             steps {
                 echo  ' ##### Test Execution starts ##### '
+                bat 'dotnet test --logger:trx;LogFileName=appaashishsawanttest.xml'
             }
         }
         stage('Release Artifacts') {
