@@ -39,7 +39,18 @@ pipeline {
             }
             steps {
                 echo  ' ##### Test Execution starts ##### '
-                bat 'dotnet test --logger:trx;LogFileName=appaashishsawanttest.xml'
+                bat 'dotnet test'
+            }
+        }
+        stage('Stop sonarqube analysis') {
+            when {
+                branch 'master'
+            }
+            steps {
+                echo ' ##### Stopping the sonar analysis ##### '
+                withSonarQubeEnv('Test_Sonar') {
+                    bat "dotnet ${Sonar_Scanner_Env}\\SonarScanner.MSBuild.dll end"
+                }
             }
         }
         stage('Release Artifacts') {
