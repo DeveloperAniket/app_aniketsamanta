@@ -9,11 +9,11 @@ pipeline {
         timeout(time: 1, unit: 'HOURS')
         buildDiscarder(logRotator(daysToKeepStr: '10', numToKeepStr: '20'))
         parallelsAlwaysFailFast()
-        echo  " ##### ${BRANCH_NAME} ##### "
     }
     stages {
         stage('Nuget restore') {
             steps {
+                echo  " ##### ${BRANCH_NAME} ##### "
                 echo  ' ##### Dotnet clean starts ##### '
                 bat 'dotnet clean'
                 echo  ' ##### Nuget restore starts ##### '
