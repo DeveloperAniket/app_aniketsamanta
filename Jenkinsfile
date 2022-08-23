@@ -9,6 +9,7 @@ pipeline {
         timeout(time: 1, unit: 'HOURS')
         buildDiscarder(logRotator(daysToKeepStr: '10', numToKeepStr: '20'))
         parallelsAlwaysFailFast()
+        echo  " ##### ${BRANCH_NAME} ##### "
     }
     stages {
         stage('Nuget restore') {
