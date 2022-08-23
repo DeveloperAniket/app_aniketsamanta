@@ -12,7 +12,6 @@ pipeline {
     stages {
         stage('Nuget restore') {
             steps {
-                echo 'Branch Name...' + env.BRANCH_NAME
                 echo  ' ##### Dotnet clean starts ##### '
                 bat 'dotnet clean'
                 echo  ' ##### Nuget restore starts ##### '
