@@ -1,6 +1,9 @@
 pipeline {
     agent any
-
+    environment {
+        Sonar_Scanner_Env = tool 'sonar_scanner_dotnet'
+        Project_Key_Env = 'sonar-aniketsamanta'
+    }
     options {
         timestamps()
         timeout(time: 1, unit: 'HOURS')
@@ -14,6 +17,15 @@ pipeline {
                 bat 'dotnet clean'
                 echo  ' ##### Nuget restore starts ##### '
                 bat 'dotnet restore'
+            }
+        }
+        stage('Start Sonarqube Analysis') {
+            when { anyOf { branch 'master' } }
+            steps {
+                echo ' ##### Starting the sonar analysis ##### '
+                withSonarQubeEnv('Test_Sonar') {
+                    bat "dotnet ${Sonar_Scanner_Env}\\SonarScanner.MSBuild.dll begin /k:\"${Project_Key_Env}\" /d:sonar.verbose=true"
+                }
             }
         }
         stage('Code build') {
