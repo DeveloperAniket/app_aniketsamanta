@@ -33,7 +33,7 @@ pipeline {
                 bat 'dotnet build'
             }
         }
-        stage('Test Execution') {
+        stage('Test Case Execution') {
             when {
                 branch 'master'
             }
@@ -66,9 +66,10 @@ pipeline {
             when { anyOf { branch 'develop'; branch 'master' } }
             steps {
                 echo  " ##### Kubernetes Deployment starts for ${env.BRANCH_NAME} ##### "
-                // script {
-                //     sh 'kubectl apply -f MasterDeploymentFile.yml --namespace=master'
-                // }
+                script {
+                    bat "kubectl apply -f k8s/${env.BRANCH_NAME}/service.yml"
+                    bat "kubectl apply -f k8s/${env.BRANCH_NAME}/deployment.yml"
+                }
             }
         }
     }
