@@ -1,9 +1,10 @@
 ﻿@{
-    ViewData["Title"] = "Home Page"; 
+    ViewData["Title"] = "Home Page";
     var BRANCH_NAME_ENV = Environment.GetEnvironmentVariable("BRANCH_NAME");
+    var COLOR_ENV = Environment.GetEnvironmentVariable("TEXT_COLOR");
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to NAGP Branch :  <span style="color:crimson"> @BRANCH_NAME_ENV</span> </h1>
+    <h1 class="display-4">Welcome to NAGP Branch : <span style="color:@COLOR_ENV"> @BRANCH_NAME_ENV</span> </h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
