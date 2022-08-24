@@ -18,6 +18,9 @@ spec:
       containers:
         - name: dotnet-nagp-app-develop
           image:  aniketdocker1/i-aniketsamanta-develop:latest
+          env:
+            - name: BRANCH_NAME
+              value: "develop"
           imagePullPolicy: Always
           ports:
             - containerPort: 4200
