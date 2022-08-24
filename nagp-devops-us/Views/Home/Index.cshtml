@@ -1,8 +1,10 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var value = System.Environment.GetEnvironmentVariable("OS");
+    var value1 = Environment.GetEnvironmentVariable("BRANCH_NAME");
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">Welcome to NAGP Branch : @value1 <span style="color:crimson"> @value</span> </h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
