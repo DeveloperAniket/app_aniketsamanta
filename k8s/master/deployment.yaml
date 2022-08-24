@@ -21,12 +21,12 @@ spec:
           env:
             - name: BRANCH_NAME
               valueFrom:
-                configMapRef:
+                configMapKeyRef:
                   name: configuration-variables-nagp-develop
                   key : branchName
             - name: TEXT_COLOR
               valueFrom:
-                configMapRef:
+                configMapKeyRef:
                   name: configuration-variables-nagp-develop
                   key : color
           imagePullPolicy: Always
