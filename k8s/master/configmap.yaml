@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: configuration-variables-nagp-master
+  namespace: kubernetes-cluster-aniket
+data:
+  branchName: master
+  color: green

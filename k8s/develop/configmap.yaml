@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: configuration-variables-nagp-develop
+  namespace: kubernetes-cluster-aniket
+data:
+  branchName: develop
+  color: yellow
