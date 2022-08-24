@@ -59,7 +59,7 @@ pipeline {
             }
             steps {
                 echo  ' ##### Release Artifacts starts ##### Need to check '
-                bat 'dotnet publis -c Release'
+                bat 'dotnet publish -c Release'
             }
         }
         stage('Kubernetes Deployment') {
