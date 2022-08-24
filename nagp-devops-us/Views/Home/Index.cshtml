@@ -2,9 +2,19 @@
     ViewData["Title"] = "Home Page";
     var BRANCH_NAME_ENV = Environment.GetEnvironmentVariable("BRANCH_NAME");
     var COLOR_ENV = Environment.GetEnvironmentVariable("TEXT_COLOR");
+    var DB_ENV = Environment.GetEnvironmentVariable("DB_USER_SECRET");
+    var DB_PASS_ENV = Environment.GetEnvironmentVariable("DB_PASS_SECRET");
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome to NAGP Branch : <span style="color:@COLOR_ENV"> @BRANCH_NAME_ENV</span> </h1>
+    
+    <div class="card">
+        <div class="container">
+            <h4>DB user secret is <b>@DB_ENV</b></h4>
+            <p>DB password secret is <b>@DB_PASS_ENV</b></p>
+        </div>
+    </div>
+
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>

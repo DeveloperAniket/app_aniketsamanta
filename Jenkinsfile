@@ -67,7 +67,9 @@ pipeline {
             steps {
                 echo  " ##### Kubernetes Deployment starts for ${env.BRANCH_NAME} ##### "
                 script {
-                    echo "k8s file location =>  k8s/${env.BRANCH_NAME}/"
+                    echo 'k8s yaml files location =>  k8s/'
+                    bat 'kubectl apply -f k8s/shared-secret.yaml'
+                    echo "k8s branch yaml files location =>  k8s/${env.BRANCH_NAME}/"
                     bat "kubectl apply -f k8s/${env.BRANCH_NAME}/configmap.yaml"
                     bat "kubectl apply -f k8s/${env.BRANCH_NAME}/service.yaml"
                     bat "kubectl apply -f k8s/${env.BRANCH_NAME}/deployment.yaml"
