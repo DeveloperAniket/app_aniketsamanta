@@ -2,8 +2,9 @@
 DevOps NAGP Project
 
 
-# [GITHUB Repo Link :] (https://github.com/DeveloperAniket/app_aniketsamanta)
+# GITHUB Repo Link :
+https://github.com/DeveloperAniket/app_aniketsamanta
 
-# [Recorded Demo] : ()
+# Recorded Demo :  
 
 
