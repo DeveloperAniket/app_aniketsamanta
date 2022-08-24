@@ -33,7 +33,7 @@ pipeline {
                 bat 'dotnet build'
             }
         }
-        stage('Test Execution') {
+        stage('Test Case Execution') {
             when {
                 branch 'master'
             }
@@ -59,16 +59,20 @@ pipeline {
             }
             steps {
                 echo  ' ##### Release Artifacts starts ##### Need to check '
-                bat 'dotnet publis -c Release'
+                bat 'dotnet publish -c Release'
             }
         }
         stage('Kubernetes Deployment') {
             when { anyOf { branch 'develop'; branch 'master' } }
             steps {
                 echo  " ##### Kubernetes Deployment starts for ${env.BRANCH_NAME} ##### "
-                // script {
-                //     sh 'kubectl apply -f MasterDeploymentFile.yml --namespace=master'
-                // }
+                script {
+                    echo "k8s file location =>  k8s/${env.BRANCH_NAME}/"
+                    // sh 'gcloud auth login'
+                    // sh 'gcloud container clusters get-credentials kubernetes-cluster-aniket --region asia-south1 --project kb2cluster'
+                    bat "kubectl apply -f k8s/${env.BRANCH_NAME}/service.yaml"
+                    bat "kubectl apply -f k8s/${env.BRANCH_NAME}/deployment.yaml"
+                }
             }
         }
     }
