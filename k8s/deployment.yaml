@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-anikersamanta-nagp
+  namespace: kubernetes-cluster-aniket
+  labels:
+    app: dotnet-nagp-app
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: dotnet-nagp-app
+  template:
+    metadata:
+      labels:
+        app: dotnet-nagp-app
+    spec:
+      containers:
+        - name: dotnet-nagp-app
+          image:  aniketdocker1/i-aniketsamanta-master:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 4200

@@ -58,12 +58,17 @@ pipeline {
                 branch 'develop'
             }
             steps {
-                echo  ' ##### Release Artifacts starts ##### '
+                echo  ' ##### Release Artifacts starts ##### Need to check '
+                bat 'dotnet publis -c Release'
             }
         }
         stage('Kubernetes Deployment') {
+            when { anyOf { branch 'develop'; branch 'master' } }
             steps {
-                echo  ' ##### Kubernetes Deployment startss ##### '
+                echo  " ##### Kubernetes Deployment starts for ${env.BRANCH_NAME} ##### "
+                script {
+                    sh 'kubectl apply -f MasterDeploymentFile.yml --namespace=master'
+                }
             }
         }
     }
