@@ -67,6 +67,8 @@ pipeline {
             steps {
                 echo  " ##### Kubernetes Deployment starts for ${env.BRANCH_NAME} ##### "
                 script {
+                    // bat 'gcloud auth login'
+                    bat 'gcloud container clusters get-credentials kubernetes-cluster-aniketsamanta --region asia-south2 --project kb2cluster'
                     echo 'k8s yaml files location =>  k8s/'
                     bat 'kubectl apply -f k8s/shared-secret.yaml'
                     echo "k8s branch yaml files location =>  k8s/${env.BRANCH_NAME}/"
