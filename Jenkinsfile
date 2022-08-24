@@ -66,9 +66,9 @@ pipeline {
             when { anyOf { branch 'develop'; branch 'master' } }
             steps {
                 echo  " ##### Kubernetes Deployment starts for ${env.BRANCH_NAME} ##### "
-                script {
-                    sh 'kubectl apply -f MasterDeploymentFile.yml --namespace=master'
-                }
+                // script {
+                //     sh 'kubectl apply -f MasterDeploymentFile.yml --namespace=master'
+                // }
             }
         }
     }

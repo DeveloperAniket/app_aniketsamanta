@@ -1,0 +1,16 @@
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  name: "app-anikersamanta-nagp-service-master"
+  namespace: "kubernetes-cluster-aniket"
+  labels:
+    app: "dotnet-nagp-app-master"
+spec:
+  type: "LoadBalancer"
+  selector:
+    app: "dotnet-nagp-app-master"
+  ports:
+  - protocol: "TCP"
+    port: 80
+  
+ 
