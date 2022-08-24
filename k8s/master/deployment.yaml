@@ -22,12 +22,12 @@ spec:
             - name: BRANCH_NAME
               valueFrom:
                 configMapKeyRef:
-                  name: configuration-variables-nagp-develop
+                  name: configuration-variables-nagp-master
                   key : branchName
             - name: TEXT_COLOR
               valueFrom:
                 configMapKeyRef:
-                  name: configuration-variables-nagp-develop
+                  name: configuration-variables-nagp-master
                   key : color
           imagePullPolicy: Always
           ports:
