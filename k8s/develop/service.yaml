@@ -2,7 +2,7 @@ apiVersion: "v1"
 kind: "Service"
 metadata:
   name: "app-anikersamanta-nagp-service-develop"
-  namespace: "kubernetes-cluster-aniket"
+  namespace: "kubernetes-cluster-aniketsamanta"
   labels:
     app: "dotnet-nagp-app-develop"
 spec:

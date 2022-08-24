@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-anikersamanta-nagp-master
-  namespace: kubernetes-cluster-aniket
+  namespace: kubernetes-cluster-aniketsamanta
   labels:
     app: dotnet-nagp-app-develop
 spec:
@@ -29,6 +29,18 @@ spec:
                 configMapKeyRef:
                   name: configuration-variables-nagp-master
                   key : color
+            - name: DB_USER_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: nagp-devops-us-secret
+                  key: username
+                  optional: false
+            - name: DB_PASS_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: nagp-devops-us-secret
+                  key: password
+                  optional: true
           imagePullPolicy: Always
           ports:
             - containerPort: 4200
