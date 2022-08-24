@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: dotnet-nagp-app-master
-          image: aniketdocker1/i-aniketsamanta-master:latest,
+          image: aniketdocker1/i-aniketsamanta-master:latest
           env:
             - name: BRANCH_NAME
               value: "master"
