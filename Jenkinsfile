@@ -67,10 +67,10 @@ pipeline {
             steps {
                 echo  " ##### Kubernetes Deployment starts for ${env.BRANCH_NAME} ##### "
                 script {
-                    sh 'gcloud auth login'
-                    sh 'gcloud container clusters get-credentials kubernetes-cluster-aniket --region asia-south1 --project kb2cluster'
-                    sh "kubectl apply -f k8s/${env.BRANCH_NAME}/service.yml"
-                    sh "kubectl apply -f k8s/${env.BRANCH_NAME}/deployment.yml"
+                    // sh 'gcloud auth login'
+                    // sh 'gcloud container clusters get-credentials kubernetes-cluster-aniket --region asia-south1 --project kb2cluster'
+                    sh "kubectl apply -f k8s/${env.BRANCH_NAME}/service.yaml"
+                    sh "kubectl apply -f k8s/${env.BRANCH_NAME}/deployment.yaml"
                 }
             }
         }
